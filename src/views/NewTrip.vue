@@ -7,7 +7,7 @@
           justify="center"
           align="center"
         >
-        <p class="logo">URent</p>
+        <h1 class="logo"><img src="../assets/logobig.png" width="65px">URent</h1>
         </v-col>
         <v-col
           class="red darken-3"
@@ -46,6 +46,7 @@
               v-model="menuEnd"
               :close-on-content-click="false"
               :return-value.sync="dateEnd"
+              z-index="100"
               transition="scale-transition"
               offset-y
             >
@@ -124,22 +125,70 @@
         </v-menu>
         </v-col>
     </v-row>
-    <v-row 
-    justify="center"> 
-    <v-col cols="7">
-      <v-list>
+    <div style="
+    display: flex;
+    padding: 30px;
+    flex-wrap: wrap;
+    ">
+      <v-card
+      style="margin:10px;"
+      class="mx-auto"
+      max-width="350"
+      outlined
+      v-for="(car, i) in cars"
+        :key="i"
+  >
+  <v-img
+      src="https://a.d-cd.net/33ed2es-960.jpg"
+      width="350px"
+    ></v-img>
+    <v-list-item three-line>
+      <v-list-item-content
+      >
+        <div class="overline mb-4">Автомобиль</div>
+        <v-list-item-title
+        class="headline mb-1" 
+        v-text="car.made + ' ' + car.model + ' ' + car.modelYear"
+        >
+        </v-list-item-title>
+        <v-rating 
+        readonly="true"
+        v-model="car.rating"
+        dense="true"
+        >
+        </v-rating>
+      </v-list-item-content>
+
+    </v-list-item>
+
+    <v-card-actions>
+      <v-btn text>Просмотр</v-btn>
+       <v-card-text></v-card-text>
+       <v-card-text
+        style="color: red;"
+        v-text="'Цена - ' + car.price"
+      >
+      </v-card-text>
+    </v-card-actions>
+  </v-card>
+      <!-- <v-list>
         <v-list-item
           v-for="(car, i) in cars"
           :key="i"
         >
           <v-list-item-content>
-            <v-list-item-title v-text="car.made"></v-list-item-title>
-            <v-list-item-subtitle v-text="car.model"></v-list-item-subtitle>
+            <v-list-item-title v-text="'Марка: ' + car.made"></v-list-item-title>
+            <v-list-item-subtitle class="v-list-item-subtitle" v-text="'Модель: ' + car.model"></v-list-item-subtitle>
+            <v-list-item-subtitle class="v-list-item-subtitle" v-text="'Год: ' + car.modelYear"></v-list-item-subtitle>
+            <v-list-item-subtitle class="v-list-item-subtitle" v-text="'Город: ' + car.location"></v-list-item-subtitle>
+            <v-list-item-subtitle class="v-list-item-subtitle" v-text="'Владелец: ' + car.ownerSurname + ' ' + car.ownerName"></v-list-item-subtitle>
+            <v-list-item-subtitle class="v-list-item-subtitle" v-text="'Цена: ' + car.price"></v-list-item-subtitle>
+            <v-list-item-subtitle class="v-list-item-subtitle" v-text="'Категория: ' + car.category"></v-list-item-subtitle>
+            <v-list-item-subtitle class="v-list-item-subtitle" v-text="'Статус: ' + car.state"></v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
-    </v-list>
-    </v-col>
-    </v-row>
+    </v-list> -->
+    </div>
 
   </v-container>
 </template>
@@ -154,6 +203,7 @@ export default {
   mixins: [ myMixin ],
   data: () => ({
     menu: false,
+    rating: 5,
     menuStart: false,
     town: "",
     menuEnd: false,
@@ -215,7 +265,8 @@ export default {
 
 .header {
   position: fixed;
-  width: 100%;
+  width: 102%;
+  z-index: 1000;
 }
 
 .logo {
@@ -244,5 +295,9 @@ export default {
 
 .content {
   margin-top:100px;
+}
+
+.v-list-item-subtitle {
+  margin: 3px;
 }
 </style>
