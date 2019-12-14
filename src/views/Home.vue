@@ -41,7 +41,7 @@
           <h1>Большой ассортимент автомобилей</h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Iure minus vitae in veniam adipisci repellat, dolorem totam
+            Iure minus vitae in veniam adipisci repellat, dolorem tota
              error aut explicabo suscipit nostrum dolorum repudiandae
               praesentium illo ex commodi consequuntur accusantium!
               </p>
