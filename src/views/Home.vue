@@ -27,7 +27,7 @@
           >
             <v-col class="text-center" cols="12">
               <div class="text">
-                <h1 class="maintext">Per2Per</h1>
+                <h1 class="maintext">NAME</h1>
                 <h3>Войди что-бы окунуться в мир <br>недорогого эксклюзивного транспорта</h3>
               </div>
               <div class="white-grad"></div>
@@ -38,9 +38,7 @@
       </v-row>
       <v-row class="lol">
         <v-col
-          lg="3"
-          md="4"
-          sm="4"
+          cols="3"
           class="loginForm"
           :class="{'show': isFormShown}"
         >
@@ -80,19 +78,25 @@
           </v-form>
         </v-col>
       </v-row>
+      <v-icon 
+         class="down-arrow" 
+         color='red' 
+         large
+         :class="{'close': arrow}"
+      >mdi-chevron-down</v-icon>
   </v-container>
 </template>
 
 <script>
 import axios from "axios";
 import { mapState } from 'vuex';
-
 /*eslint no-console: ["error", { allow: ["warn", "log"] }] */
 export default {
   name: 'home',
   data: () => ({
     isFormShown: false,
     valid: false,
+    arrow: true,
     password: '',
     passRules: [
       v => !!v || 'Необходимо указать пароль',
@@ -120,7 +124,11 @@ export default {
       } else {
         app.isFormShown = false;
       }
-      // console.log(pageYOffset);
+      if(this.scrollY > 200) {
+        app.arrow = true
+      } else {
+        app.arrow = false
+      }
     });
   },
   watch: {
@@ -187,7 +195,7 @@ export default {
 .white-grad {
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(0, 98, 255, 0), rgba(250, 250, 250, 0) 0%, rgb(250, 250, 250) 80%, rgb(250,250,250));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0),rgba(250, 250, 250, 0.4) 70%, rgba(250, 250, 250, 1));
   position: absolute;
   top: 0;
   left: 0;
@@ -205,6 +213,17 @@ export default {
       opacity: 1;
     }
 
+}
+
+.down-arrow {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  opacity: 1;
+
+  &.close {
+    opacity: 0;
+  }
 }
 
 .loginForm > .v-form {
@@ -231,7 +250,7 @@ export default {
 }
 
 .lol {
-  height: 100vh;
+  height: 50vh;
 }
 
 </style>
