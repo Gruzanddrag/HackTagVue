@@ -36,6 +36,48 @@
         </v-parallax>
         </v-col>
       </v-row>
+      <v-row justify="center" style="margin-top:200px;">
+        <v-col cols="5" class="ph" lg="5">
+          <h1>Большой ассортимент автомобилей</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Iure minus vitae in veniam adipisci repellat, dolorem totam
+             error aut explicabo suscipit nostrum dolorum repudiandae
+              praesentium illo ex commodi consequuntur accusantium!
+              </p>
+              <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Iure minus vitae in veniam adipisci repellat, dolorem totam
+             error aut explicabo suscipit nostrum dolorum repudiandae
+              praesentium illo ex commodi consequuntur accusantium!
+              </p>
+        </v-col>
+        <v-col cols="7" class="pa" lg="5">
+          <img src="../assets/main-car.jpg" alt="" width="500px">
+        </v-col>
+      </v-row>
+
+      <v-row justify="center" style="margin-top:200px;margin-bottom:200px;">
+        <v-col cols="7" class="pa" lg="5">
+          <img src="../assets/main-car.jpg" alt="" width="500px">
+        </v-col>
+        <v-col cols="5" class="ph" lg="5">
+          <h1>Большой ассортимент автомобилей</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Iure minus vitae in veniam adipisci repellat, dolorem totam
+             error aut explicabo suscipit nostrum dolorum repudiandae
+              praesentium illo ex commodi consequuntur accusantium!
+              </p>
+              <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Iure minus vitae in veniam adipisci repellat, dolorem totam
+             error aut explicabo suscipit nostrum dolorum repudiandae
+              praesentium illo ex commodi consequuntur accusantium!
+              </p>
+        </v-col>
+      </v-row>
+      
       <v-row class="lol">
         <v-col
           cols="3"
@@ -251,6 +293,14 @@ export default {
 
 .lol {
   height: 50vh;
+}
+
+.ph {
+  padding: auto;
+}
+
+.pa {
+  padding: auto;
 }
 
 </style>
