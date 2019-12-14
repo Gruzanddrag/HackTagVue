@@ -7,7 +7,15 @@
             <v-col class="text-center" cols="12">
               <v-btn text color='white' class="red--text">Домой</v-btn>
               <v-btn text>О нас</v-btn>
-              <v-btn text>Профиль</v-btn>
+              <v-btn text class="blue--text" 
+              @click="$vuetify.goTo('form', {
+                    duration: 1500,
+                    offset: 0,
+                    easing: 'easeInOutCubic',
+                  })"
+              >
+                Войти
+              </v-btn>
               <v-btn text>Помощь</v-btn>
             </v-col>
         </v-row>
@@ -36,7 +44,7 @@
         </v-parallax>
         </v-col>
       </v-row>
-      <v-row justify="center" style="margin-top:200px;">
+      <v-row justify="center" class="scrollAnimated r" style="margin-top:200px;">
         <v-col cols="5" class="ph" lg="5">
           <h1>Большой ассортимент автомобилей</h1>
           <p>
@@ -53,13 +61,55 @@
               </p>
         </v-col>
         <v-col cols="7" class="pa" lg="5">
-          <img src="../assets/main-car.jpg" alt="" width="500px">
+          <img src="../assets/car1.jpg" alt="" width="500px">
         </v-col>
       </v-row>
 
-      <v-row justify="center" style="margin-top:200px;margin-bottom:200px;">
+      <v-row justify="center" class="scrollAnimated l"  style="margin-top:200px;margin-bottom:200px;">
         <v-col cols="7" class="pa" lg="5">
-          <img src="../assets/main-car.jpg" alt="" width="500px">
+          <img src="../assets/car2.jpg" alt="" width="500px">
+        </v-col>
+        <v-col cols="5" class="ph" lg="5">
+          <h1>Большой ассортимент автомобилей</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Iure minus vitae in veniam adipisci repellat, dolorem totam
+             error aut explicabo suscipit nostrum dolorum repudiandae
+              praesentium illo ex commodi consequuntur accusantium!
+              </p>
+              <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Iure minus vitae in veniam adipisci repellat, dolorem totam
+             error aut explicabo suscipit nostrum dolorum repudiandae
+              praesentium illo ex commodi consequuntur accusantium!
+              </p>
+        </v-col>
+      </v-row>
+
+      <v-row justify="center" class="scrollAnimated r"  style="margin-top:200px;margin-bottom:200px;">
+        <v-col cols="5" class="ph" lg="5">
+          <h1>Большой ассортимент автомобилей</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Iure minus vitae in veniam adipisci repellat, dolorem tota
+             error aut explicabo suscipit nostrum dolorum repudiandae
+              praesentium illo ex commodi consequuntur accusantium!
+              </p>
+              <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Iure minus vitae in veniam adipisci repellat, dolorem totam
+             error aut explicabo suscipit nostrum dolorum repudiandae
+              praesentium illo ex commodi consequuntur accusantium!
+              </p>
+        </v-col>
+        <v-col cols="7" class="pa" lg="5">
+          <img src="../assets/car3.jpeg" alt="" width="500px">
+        </v-col>
+      </v-row>
+
+      <v-row justify="center" class="scrollAnimated l"  style="margin-top:200px;margin-bottom:200px;">
+        <v-col cols="7" class="pa" lg="5">
+          <img src="../assets/car4.svg" alt="" width="500px">
         </v-col>
         <v-col cols="5" class="ph" lg="5">
           <h1>Большой ассортимент автомобилей</h1>
@@ -85,11 +135,12 @@
           :class="{'show': isFormShown}"
         >
           <v-form
+            v-scroll:#target="'login'"
             ref="loginForm"
             v-model="valid"
             lazy-validation
           >
-            <h2>Вход</h2>
+            <h2 >Вход</h2>
             <v-text-field
               v-model="email"
               :rules="emailRules"
@@ -112,7 +163,7 @@
             <v-btn
               outlined
               color="blue"
-              class="mr-4"
+              class="mr-4 loginBtn"
               @click="sendAuth"
             >
               ВОЙТИ
@@ -126,12 +177,13 @@
          large
          :class="{'close': arrow}"
       >mdi-chevron-down</v-icon>
+      <div class="footer"></div>
   </v-container>
 </template>
 
 <script>
 import axios from "axios";
-import { mapState } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 /*eslint no-console: ["error", { allow: ["warn", "log"] }] */
 export default {
   name: 'home',
@@ -161,16 +213,19 @@ export default {
         let styles = img.getAttribute('style');
       // console.log(this.scrollY);
       img.setAttribute('style', styles.split('filter')[0] + 'filter: blur(' + this.scrollY / 15 + 'px)');
-      if(this.scrollY > 50){
-        app.isFormShown = true;
-      } else {
-        app.isFormShown = false;
-      }
-      if(this.scrollY > 200) {
+      let form = document.querySelector('.loginForm');
+      if(form.getBoundingClientRect().top <= this.window.innerHeight / 1.5){
+        form.classList.add('show');
         app.arrow = true
-      } else {
+      }else {
         app.arrow = false
       }
+      let animated = document.querySelectorAll('.scrollAnimated');
+      animated.forEach(el => {
+        if(el.getBoundingClientRect().top <= this.window.innerHeight / 1.5){
+          el.classList.add('show');
+        }
+      })
     });
   },
   watch: {
@@ -204,19 +259,23 @@ export default {
           headers: {'Content-Type': 'multipart/form-data' }
         }).then((res) => {
           console.log(res);
+            if(res.data.status) {
+              this.SET_TOKEN(res.data.access_token);
+              this.SET_USER(res.data.user);
+            }
         })
       }
-    }
-    
+    },
+    ...mapMutations(['SET_TOKEN', 'SET_USER'])
   }
 }
 </script>
 <style lang="scss" scoped>
 .maintext {
-  background: linear-gradient(45deg, rgb(255, 0, 0), #9900ff 60%, #9900ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: #0B2349;
+  // background: linear-gradient(45deg, rgb(255, 0, 0), #9900ff 60%, #9900ff);
+  // -webkit-background-clip: text;
+  // -webkit-text-fill-color: transparent;
+  color: #E53935;
   text-transform: uppercase;
   font-size: 100px;
 }
@@ -246,7 +305,7 @@ export default {
 
 .loginForm {
     opacity: 0;
-    transition: opacity ease-in-out 0.6s;
+    transition: opacity ease-in-out 1s;
     margin: auto;
     z-index: 40;
     margin-top: -130px;
@@ -255,6 +314,10 @@ export default {
       opacity: 1;
     }
 
+}
+
+.loginBtn {
+  margin-top: 20px;
 }
 
 .down-arrow {
@@ -289,6 +352,35 @@ export default {
   &:last-of-type{
     margin-right: 0;
   }
+}
+
+.scrollAnimated {
+  opacity: 0;
+  transition: all ease-in-out 1s;
+
+  &.r{
+    margin-left: -30px;
+    &.show {
+      transform: translatex(30px);
+      opacity: 1;
+    }
+  }
+
+  &.l{
+    margin-left: 30px;
+    &.show {
+      transform: translatex(-30px);
+      opacity: 1;
+    }
+  }
+}
+
+.footer {
+  position: absolute;
+  height: 40px;
+  bottom: 0;
+  width: 100%;
+  background: #E53935;
 }
 
 .lol {
