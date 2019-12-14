@@ -262,6 +262,16 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+
+@font-face {
+  font-family: "PoiretOne-Regular";
+  src: url("../assets/PoiretOne-Regular.ttf"),
+  url("../assets/PoiretOne-Regular.ttf") format("truetype");
+  font-family: "Righteous-Regular";
+  src: url("../assets/Righteous-Regular.ttf"),
+  url("../assets/Righteous-Regular.ttf") format("truetype");
+}
+
 .maintext {
   // background: linear-gradient(45deg, rgb(255, 0, 0), #9900ff 60%, #9900ff);
   // -webkit-background-clip: text;
