@@ -1,12 +1,12 @@
 <template>
-  <v-container fluid class="pa-0">
+  <v-container fluid class="pa-0" style="width: calc(24px + 100%);">
         <v-row
           style="z-index: 40"
           class="haeder-row"
           >
             <v-col class="text-center" cols="12">
-              <v-btn text color='white' class="red--text">Домой</v-btn>
-              <v-btn text>О нас</v-btn>
+              <v-btn text color='white' class="red--text">Главная </v-btn>
+              <v-btn text color='white'>О нас</v-btn>
               <v-btn text class="blue--text" 
               @click="$vuetify.goTo('form', {
                     duration: 1500,
@@ -14,9 +14,9 @@
                     easing: 'easeInOutCubic',
                   })"
               >
-                Войти
+                Войти в профиль
               </v-btn>
-              <v-btn text>Помощь</v-btn>
+              <v-btn text color='white'>Помощь</v-btn>
             </v-col>
         </v-row>
       <v-row>
@@ -25,7 +25,7 @@
           class="pa-0 main"
         >
         <v-parallax
-        height="600"
+        height="700"
           src="../assets/main-car.jpg"
         >
           <v-row
@@ -35,8 +35,8 @@
           >
             <v-col class="text-center" cols="12">
               <div class="text">
-                <h1 class="maintext">NAME</h1>
-                <h3>Войди что-бы окунуться в мир <br>недорогого эксклюзивного транспорта</h3>
+                <h1 class="maintext">URent</h1>
+                <h3>«Зарегистрируйтесь, что-бы окунуться в мир <br>недорогого эксклюзивного транспорта».</h3>
               </div>
               <div class="white-grad"></div>
             </v-col>
@@ -44,87 +44,78 @@
         </v-parallax>
         </v-col>
       </v-row>
-      <v-row justify="center" class="scrollAnimated r" style="margin-top:200px;">
+      <v-row justify="center" style="margin-top:100px; font-size: 30px; border-bottom:2px solid black;" class="scrollAnimated r"><h1>Почему именно наш сервис?</h1></v-row>
+      <v-row justify="center" class="scrollAnimated r" style="margin-top:100px;">
         <v-col cols="5" class="ph" lg="5">
           <h1>Большой ассортимент автомобилей</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Iure minus vitae in veniam adipisci repellat, dolorem tota
-             error aut explicabo suscipit nostrum dolorum repudiandae
-              praesentium illo ex commodi consequuntur accusantium!
-              </p>
-              <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Iure minus vitae in veniam adipisci repellat, dolorem totam
-             error aut explicabo suscipit nostrum dolorum repudiandae
-              praesentium illo ex commodi consequuntur accusantium!
+            Вы можете найти сотни моделей различных авто на любой вкус.
+            Хотите прокатиться на Мерседесе или быть может Тесле?
+            Обычный каршэринг с трудом подберет что-то отдаленно похожее.
+            Арендуйте то, чего нет нигде. Нужен большой грузовик для
+             перевозки мебели? А может быть полноприводный джип для 
+             поездки по бездорожью? У нас есть что предложить
               </p>
         </v-col>
         <v-col cols="7" class="pa" lg="5">
-          <img src="../assets/car1.jpg" alt="" width="500px">
+          <img src="../assets/pic1.jpg" alt="" width="500px" class="ph_b">
         </v-col>
       </v-row>
 
       <v-row justify="center" class="scrollAnimated l"  style="margin-top:200px;margin-bottom:200px;">
         <v-col cols="7" class="pa" lg="5">
-          <img src="../assets/car2.jpg" alt="" width="500px">
+          <img src="../assets/pic2.png" alt="" width="500px" class="ph_b">
         </v-col>
         <v-col cols="5" class="ph" lg="5">
-          <h1>Большой ассортимент автомобилей</h1>
+          <h1>Бесплатная отмена</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Iure minus vitae in veniam adipisci repellat, dolorem totam
-             error aut explicabo suscipit nostrum dolorum repudiandae
-              praesentium illo ex commodi consequuntur accusantium!
-              </p>
-              <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Iure minus vitae in veniam adipisci repellat, dolorem totam
-             error aut explicabo suscipit nostrum dolorum repudiandae
-              praesentium illo ex commodi consequuntur accusantium!
-              </p>
+            Непредвиденные обстоятельства не обходят никого из нас,
+            поэтому если вы по какой-то причине не желаете продолжать
+            свою бронь, то вы можете с лёгкостью и совершенно беслпатно
+            отменить её в течении 24 часов с момента букинга.
+          </p>
         </v-col>
       </v-row>
 
       <v-row justify="center" class="scrollAnimated r"  style="margin-top:200px;margin-bottom:200px;">
         <v-col cols="5" class="ph" lg="5">
-          <h1>Большой ассортимент автомобилей</h1>
+          <h1>Пассивный заработок в нашем сервисе</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Iure minus vitae in veniam adipisci repellat, dolorem tota
-             error aut explicabo suscipit nostrum dolorum repudiandae
-              praesentium illo ex commodi consequuntur accusantium!
+           Наш сервис URent позволяет пользователям сдавать свои авто
+           в аренду, обеспечив себе хороший пассивный доход. Для этого вам необходимо
+           пройти по <a href="">ссылке</a> и заполнить анкету, в которой необходимо указать:
+           <ul>
+             <ol>Номер гос. знака</ol>
+             <ol>Марку и модель машины</ol>
+             <ol>Год изготовления</ol>
+             <ol>Где находится ваша машина</ol>
+             <ol>Фотографии автомобиля</ol>
+             <ol>Стандарты качества и безопасности</ol>
+             <ol>Прочие технические подробности</ol>
+           </ul>
               </p>
               <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Iure minus vitae in veniam adipisci repellat, dolorem totam
-             error aut explicabo suscipit nostrum dolorum repudiandae
-              praesentium illo ex commodi consequuntur accusantium!
+            После этого ваш автомобиль будет рассмотрен модератором и,
+            в случае соответствия указанных данных политике сайта, выставлен 
+            на площадке для аренды!
               </p>
         </v-col>
         <v-col cols="7" class="pa" lg="5">
-          <img src="../assets/car3.jpeg" alt="" width="500px">
+          <img src="../assets/pic3.jpg" alt="" width="500px" class="ph_b">
         </v-col>
       </v-row>
 
       <v-row justify="center" class="scrollAnimated l"  style="margin-top:200px;margin-bottom:200px;">
         <v-col cols="7" class="pa" lg="5">
-          <img src="../assets/car4.svg" alt="" width="500px">
+          <img src="../assets/pic4.jpg" alt="" width="500px" class="ph_b">
         </v-col>
         <v-col cols="5" class="ph" lg="5">
-          <h1>Большой ассортимент автомобилей</h1>
+          <h1>Неприлично дешевые приложения</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Iure minus vitae in veniam adipisci repellat, dolorem totam
-             error aut explicabo suscipit nostrum dolorum repudiandae
-              praesentium illo ex commodi consequuntur accusantium!
-              </p>
-              <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Iure minus vitae in veniam adipisci repellat, dolorem totam
-             error aut explicabo suscipit nostrum dolorum repudiandae
-              praesentium illo ex commodi consequuntur accusantium!
-              </p>
+            Обычный автомобиль-универсал в стандартных каршэринговых
+           компаниях вроде Яндекса, BelkaCar и других обойдётся вам в ~6000 р. за сутки. 
+           Только на URent вы сможете забронировать автомобиль от 1800р.
+          </p>
         </v-col>
       </v-row>
       
@@ -275,9 +266,13 @@ export default {
   // background: linear-gradient(45deg, rgb(255, 0, 0), #9900ff 60%, #9900ff);
   // -webkit-background-clip: text;
   // -webkit-text-fill-color: transparent;
-  color: #E53935;
-  text-transform: uppercase;
-  font-size: 100px;
+  
+  letter-spacing: 15px;
+  font-size: 150px;
+  font-family: Aquatico-Regular;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  width: calc(24px + 100%);
+  color:rgba(0, 0, 0, 0.65)
 }
 
 .text {
@@ -285,12 +280,11 @@ export default {
   z-index: 40;
 
   & > h3 {
-    color: black;
+    color: #fdfdfd;
+    text-shadow: 0px -1px 2px rgba(0, 0, 0, 1);
     display: inline-block;
     margin: auto;
-    background: white;
-    border-radius: 5px;
-    padding: 5px 20px;
+    font-size: 25px;
   }
 }
 .white-grad {
@@ -342,8 +336,8 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0)
+  width: calc(24px + 100%);
+  background: rgba(0, 0, 0, 0.75);
 }
 
 .haeder-row .v-btn {
@@ -377,7 +371,7 @@ export default {
 
 .footer {
   position: absolute;
-  height: 40px;
+  height: 70px;
   bottom: 0;
   width: 100%;
   background: #E53935;
@@ -395,4 +389,16 @@ export default {
   padding: auto;
 }
 
+h1, h3 {
+  font-family: PoiretOne-Regular;
+}
+
+p {
+  font-family: Roboto, sans-serif;
+}
+
+.ph_b {
+  border-radius: 9px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+}
 </style>
