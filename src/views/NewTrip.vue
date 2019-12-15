@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="pa-0">
     <v-row
-          class="header">
+          class="header" style="background-color:#fafafa;">
         <v-col
           cols="2"
           justify="center"
@@ -15,7 +15,7 @@
         >
         <v-row
           justify="center">
-          <v-col cols="4">
+          <v-col cols="3">
             <v-menu
               ref="menuStart"
               v-model="menuStart"
@@ -40,7 +40,7 @@
                 </v-date-picker>
             </v-menu>
           </v-col>
-          <v-col cols="4">
+          <v-col cols="3">
             <v-menu
               ref="menuEnd"
               v-model="menuEnd"
@@ -59,6 +59,7 @@
                   v-on="on"
                 ></v-text-field>
               </template>
+              
                 <v-date-picker v-model="dateEnd" no-title scrollable>
                   <v-spacer></v-spacer>
                   <v-btn text color="primary" @click="menuEnd = false">Cancel</v-btn>
@@ -66,6 +67,30 @@
                 </v-date-picker>
             </v-menu>
           </v-col>
+           <v-col 
+        cols="3"
+        justify="center"
+        align="center">
+        <v-menu>
+          <template v-slot:activator="{ on: menu }">
+            <v-text-field
+              dark
+              v-model="town"
+              label="Ввeдите название города"
+              @input="reloadTowns()"
+            ></v-text-field>
+          </template>
+          <v-list>
+            <!-- <v-list-item
+              v-for="(item, index) in items"
+              :key="index"
+              @click="null"
+            >
+              <v-list-item-title>{{ item.title }}</v-list-item-title> -->
+            <!-- </v-list-item> -->
+          </v-list>
+        </v-menu>
+        </v-col>
           <v-col 
           cols="3"
           justify="center"
@@ -105,14 +130,14 @@
         justify="center"
         align="center">
         <v-menu>
-          <template v-slot:activator="{ on: menu }">
+          <!-- <template v-slot:activator="{ on: menu }">
             <v-text-field
               outlined
               v-model="town"
               label="Ввeдите название города"
               @input="reloadTowns()"
             ></v-text-field>
-          </template>
+          </template> -->
           <v-list>
             <!-- <v-list-item
               v-for="(item, index) in items"
@@ -133,14 +158,16 @@
       <v-card
       style="margin:10px;"
       class="mx-auto"
-      max-width="350"
+      width="350"
       outlined
       v-for="(car, i) in cars"
         :key="i"
   >
   <v-img
-      src="https://a.d-cd.net/33ed2es-960.jpg"
+      :src="'http://'+car.image"
       width="350px"
+      height="350px"
+
     ></v-img>
     <v-list-item three-line>
       <v-list-item-content
